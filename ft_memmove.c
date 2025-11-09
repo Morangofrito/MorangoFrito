@@ -1,4 +1,17 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pauloalv <pauloalv@student.42porto.co      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/22 17:55:25 by pauloalv          #+#    #+#             */
+/*   Updated: 2025/11/08 21:25:18 by pauloalv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+//#include <stdio.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -8,7 +21,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	if (!dst && !src)
 		return (NULL);
-
 	dstp = (char *)dst;
 	srcp = (char *)src;
 	i = 0;
@@ -26,7 +38,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-int main()
+/* int main()
 {
 	char	dst[130] = "hello222i1111";
 	char	src[] = "worl";
@@ -35,4 +47,4 @@ int main()
 	printf("Before: dst = %s, src = %s\n", dst, src);
 	printf("%s\n", (char *)ft_memmove(dst, src, len));
 	return (0);	
-}
+}*/

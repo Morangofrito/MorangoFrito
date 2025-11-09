@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pauloalv <pauloalv@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 01:53:17 by pauloalv          #+#    #+#             */
-/*   Updated: 2025/11/09 00:20:00 by pauloalv         ###   ########.fr       */
+/*   Created: 2025/10/23 20:39:40 by pauloalv          #+#    #+#             */
+/*   Updated: 2025/11/08 21:29:17 by pauloalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
+#include <unistd.h>
+//#include <stdio.h>
 #include "libft.h"
 
-int	ft_isalnum(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	return ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'));
+	size_t			i;
+	unsigned char	a;
+	unsigned char	*tmp;
+
+	i = 0;
+	tmp = (unsigned char *)s;
+	a = (unsigned char)c;
+	while (i < n)
+	{
+		if ((unsigned char)tmp[i] == a)
+			return ((void *)&tmp[i]);
+		i++;
+	}
+	return (NULL);
 }
-/*
-int main()
-{
-	printf("%d\n", ft_isalnum('['));
-	return 0;
-}*/

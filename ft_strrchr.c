@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pauloalv <pauloalv@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 22:42:18 by pauloalv          #+#    #+#             */
-/*   Updated: 2025/11/08 20:55:57 by pauloalv         ###   ########.fr       */
+/*   Created: 2025/10/22 18:01:47 by pauloalv          #+#    #+#             */
+/*   Updated: 2025/11/08 20:24:04 by pauloalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
+#include <unistd.h>
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char	*dstp;
-	unsigned char	*srcp;
+	char	*ultimo;
 
-	if (src == (NULL) && dst == (NULL))
-		return (dst);
-	dstp = (unsigned char *) dst;
-	srcp = (unsigned char *) src;
-	while (n > 0)
+	ultimo = NULL;
+	while (*s != '\0')
 	{
-		*(dstp++) = *(srcp++);
-		n--;
+		if (*s == (char)c)
+			ultimo = (char *)s;
+		s++;
 	}
-	return (dst);
+	if (*s == (char)c)
+		ultimo = (char *)s;
+	return (ultimo);
 }
+
 /*int main()
 {
+	const char s[20] = "hllo";
+	int c = 'e';
+	char *result;
 
+	result = ft_strrchr(s, c);
+	if (result != NULL)
+		printf("última ocorrencia de '%c' está em %s\n", c, result);
+	else
+		printf("Carácter '%c' nao encontrado\n", c);
 
-	char dst[10];
-	char src[] = "hello";
-	size_t n = 5;
-
-	printf("%s\n", (unsigned char *)ft_memcpy(dst, src, n));
-	return (0);
-}
-*/
+	return 0;
+}*/

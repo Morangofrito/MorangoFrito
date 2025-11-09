@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pauloalv <pauloalv@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 22:43:40 by pauloalv          #+#    #+#             */
-/*   Updated: 2025/11/08 20:15:15 by pauloalv         ###   ########.fr       */
+/*   Created: 2025/11/03 04:25:04 by pauloalv          #+#    #+#             */
+/*   Updated: 2025/11/08 20:51:54 by pauloalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 //#include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-	size_t	src_len;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
-	src_len = 0;
-	while (src[src_len] != '\0')
-		src_len++;
-	if (size == 0)
-		return (src_len);
-	while (src[i] != '\0' && i < size - 1)
+	while (i < n)
 	{
-		dst[i] = src[i];
+		if (str1[i] != str2[i])
+		{
+			return (str1[i] - str2[i]);
+		}
 		i++;
 	}
-	dst[i] = '\0';
-	return (src_len);
+	return (0);
 }
-
 /*int main()
-{	
-	char dst[42] = "";
-	char src[] = "jell00";
-	size_t resultado;
-	size_t size = 5;
+{
+	char s1[10] = "teste";
+	char s2[10] = "test";
+	size_t n = 7;
 
-	resultado = ft_strlcpy(dst, src, size);
-	printf("%s\n", dst);
-	printf("%zu\n", resultado);
+	printf("dif: %d\nstr 1: %s\nstr 2: %s\n", ft_memcmp(s1, s2, n), s1, s2);
 	return (0);
 }*/

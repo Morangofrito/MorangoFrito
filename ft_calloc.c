@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pauloalv <pauloalv@student.42porto.co      +#+  +:+       +#+        */
+/*   By: pauloalv <pauloalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 01:53:17 by pauloalv          #+#    #+#             */
-/*   Updated: 2025/11/09 00:20:00 by pauloalv         ###   ########.fr       */
+/*   Created: 2025/10/24 05:10:57 by pauloalv          #+#    #+#             */
+/*   Updated: 2025/11/05 02:03:20 by pauloalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
 #include "libft.h"
+#include <stdlib.h>
 
-int	ft_isalnum(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	return ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'));
+	unsigned char	*tmp;
+	size_t			i;
+
+	i = 0;
+	tmp = malloc(count * size);
+	if (!tmp)
+		return (NULL);
+	while (i < count * size)
+		tmp[i++] = 0;
+	return (tmp);
 }
-/*
-int main()
-{
-	printf("%d\n", ft_isalnum('['));
-	return 0;
-}*/

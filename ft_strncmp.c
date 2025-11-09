@@ -1,48 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pauloalv <pauloalv@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 22:43:40 by pauloalv          #+#    #+#             */
-/*   Updated: 2025/11/08 20:15:15 by pauloalv         ###   ########.fr       */
+/*   Created: 2025/10/23 18:42:41 by pauloalv          #+#    #+#             */
+/*   Updated: 2025/11/09 00:23:02 by pauloalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+#include <unistd.h>
 //#include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	size_t	src_len;
 
 	i = 0;
-	src_len = 0;
-	while (src[src_len] != '\0')
-		src_len++;
-	if (size == 0)
-		return (src_len);
-	while (src[i] != '\0' && i < size - 1)
+	while (i < n)
 	{
-		dst[i] = src[i];
+		if (s1[i] != s2[i])
+		{
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		}
+		if (s1[i] == 0)
+			break ;
 		i++;
 	}
-	dst[i] = '\0';
-	return (src_len);
-}
-
-/*int main()
-{	
-	char dst[42] = "";
-	char src[] = "jell00";
-	size_t resultado;
-	size_t size = 5;
-
-	resultado = ft_strlcpy(dst, src, size);
-	printf("%s\n", dst);
-	printf("%zu\n", resultado);
 	return (0);
-}*/
+}
+/*
+int	main()
+{
+	const char s1[20] = "hl lo";
+	const char s2[20] = "hy a!";
+	size_t n = 2;
+	int resultado;
+
+	resultado = ft_strncmp (s1, s2, n);
+	printf("%d\n", resultado);
+	return (0);
+}
+*/
